@@ -1102,19 +1102,15 @@ class CommonGLPI {
 
                   var current_action = $(this).data('action');
 
-                  $('<div></div>').dialog({
+                  glpi_ajax_dialog({
+                     url: '".$CFG_GLPI['root_doc']. "/ajax/dropdownMassiveAction.php',
                      title: ma.actions[current_action],
-                     width: 500,
-                     height: 'auto',
-                     modal: true,
-                     appendTo: '#dialog_container_$rand'
-                  }).load(
-                     '".$CFG_GLPI['root_doc']. "/ajax/dropdownMassiveAction.php',
-                     Object.assign(
+                     params: Object.assign(
                         {action: current_action},
                         ma
-                     )
-                  );
+                     ),
+                     appendTo: '#dialog_container_$rand',
+                  });
                });
             });");
          }
